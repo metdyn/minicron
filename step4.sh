@@ -28,7 +28,7 @@ dX0=${key}$d2
 dX1=${key}$d1
 cd $d_s
 cd graphics_March16
-echo "dX0 dX1  $dX0 $dX1"
+echo "dX0 dX1 = $dX0 $dX1"
 
 sed -i -e "s#dX0 =.*#dX0 = '$dX0'#" \
        -e "s#dX1 =.*#dX1 = '$dX1'#" \

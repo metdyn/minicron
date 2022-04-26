@@ -7,7 +7,7 @@ mkdir -p $base; cd $base
 source  ./mpas-bundle/env-setup/gnu-openmpi-cheyenne.sh
 f=z.ctest.all
 cd build
-make -j24 &> zb
+make -j16 &> zb
 cd mpas-jedi
 ctest -VV &> $f
 tail -100 $f | mail -s "ctest : $f : $base" $USER@ucar.edu
@@ -30,5 +30,3 @@ cp -rp $f $f.org
 source .github/stable_mark.sh
 mv $f  $base/../${f}_${mydate}_$s
 cp -rp $f.org $f
-
-exit -1
