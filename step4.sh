@@ -39,7 +39,6 @@ module load python/3.7.9
 module load ncarenv
 ncar_pylib
 python SpawnAnalyzeStats.py -d mpas
-sleep 10m
+/usr/bin/sleep 600
 mv mpas_analyses   $base/mpas_analyses_${d1}_vs_${d2}
 deactivate ncar_pylib
-
