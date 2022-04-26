@@ -42,3 +42,4 @@ python SpawnAnalyzeStats.py -d mpas
 sleep 10m
 mv mpas_analyses   $base/mpas_analyses_${d1}_vs_${d2}
 deactivate ncar_pylib
+
