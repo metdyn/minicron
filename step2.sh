@@ -2,6 +2,7 @@
 
 mydate=$(date '+%Y-%m-%d')
 base=/glade/scratch/$USER/br_autotest/br_$mydate
+[[ $# -ge 1 ]] && base=/glade/scratch/$USER/br_autotest/br_$1
 mkdir -p $base; cd $base
 #
 source  ./mpas-bundle/env-setup/gnu-openmpi-cheyenne.sh
@@ -10,7 +11,8 @@ cd build
 make -j16 &> zb
 cd mpas-jedi
 ctest -VV &> $f
-tail -100 $f | mail -s "ctest : $f : $base" $USER@ucar.edu
+w=`grep -i "tests passed" $f`
+tail -20 $f | mail -s "$w : $base" $USER@ucar.edu
 
 
 #

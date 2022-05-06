@@ -3,10 +3,10 @@ base=/glade/scratch/$USER/br_autotest/br_$mydate
 d_here="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 
 cat > crontab.txt <<EOF
-00 00 * * 1,2,3,4,5,7  $d_here/step1.sh
-15 00 * * 1,2,3,4,5,7  /opt/pbs/bin/qsub ${d_here}/job_make_ctest.scr
-55 00 * * 7            $d_here/step3.sh &> $d_here/out.3
-00 13 * * 7            $d_here/step4.sh &> $d_here/out.4
+00 00 * * 1,2,3,4,5,6  $d_here/step1.sh
+15 00 * * 1,2,3,4,5,6  /opt/pbs/bin/qsub ${d_here}/job_make_ctest.scr
+30 01 * * 5,6           $d_here/step3.sh &> $d_here/out.3
+00 18 * * 5,6           $d_here/step4.sh &> $d_here/out.4
 #
 #crontab $d_here/crontab.txt
 EOF
