@@ -1,0 +1,30 @@
+control: 
+  flow: MPAS-Workflow_4_build_May_4
+  flow: MPAS-Workflow_June_24
+  build: /glade/scratch/yonggangyu/br_autotest/br_2022-06-24/build
+
+  flow: MPAS-Workflow_4_build_May_31
+  build: /glade/scratch/yonggangyu/br_autotest/br_2022-05-26/build
+
+  flow: MPAS-Workflow_4_build_May_31
+  build: /glade/scratch/yonggangyu/br_autotest/br_2022-06-09/build
+
+  flow: MPAS-Workflow_4_build_May_31
+  build: /glade/scratch/yonggangyu/br_autotest/br_2022-06-16/build
+
+  flow: MPAS-Workflow_4_build_May_31
+  build: /glade/scratch/yonggangyu/br_autotest/br_2022-06-02/build
+
+  flow: MPAS-Workflow_4_build_May_31
+  build: /glade/scratch/yonggangyu/br_autotest/br_2022-05-19/build
+
+  flow: MPAS-Workflow_4_build_May_4
+  build: /glade/scratch/yonggangyu/br_autotest/br_2022-05-06/build
+
+  flow: MPAS-Workflow_4_build_May_4
+  build: /glade/scratch/yonggangyu/br_autotest/br_2022-05-01/build
+
+  compiler : 'intel-impi'
+  flow: MPAS-Workflow_4_build_June_24_intel
+  build: /glade/scratch/yonggangyu/br_mpasjedi_intel_feature/build
+

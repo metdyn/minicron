@@ -1,0 +1,5 @@
+control: 
+  flow: 
+  build: 
+  compiler : 'gnu-openmpi'
+# compiler : 'intel-impi'

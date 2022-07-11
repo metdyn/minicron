@@ -1,9 +1,10 @@
 *~
-job_make_ctest.scr
-crontab.txt
+job_make_ctest*.scr
+crontab*.txt
 mpas-jedi_*
 MPAS-Workflow*
 graphics*
 out.*
 ckcron.sh
 test_ncar_pylib.sh
+CMake*

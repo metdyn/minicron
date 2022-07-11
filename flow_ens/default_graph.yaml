@@ -1,0 +1,5 @@
+graph:
+  T0:
+  T1:
+  prefix_cycle_dir: 'yonggangyu_3denvar-60-iter_OIE120km_WarmStart_br_'
+  d_mj_graph:  'mpas-jedi_graph_yu_June_28/graphics'

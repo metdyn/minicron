@@ -1,6 +1,10 @@
 #!/bin/bash
 
-pr_name="oops1698"
+#pr_name="oops1698"
+#pr_name="sp_t2_build_DP"
+#pr_name="saber_backward_sp2"
+pr_name="geometry_copy_std_move"
+
 mydate=$(date '+%Y-%m-%d')
 base=/glade/scratch/$USER/br_autotest/br_$mydate
 d_here="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
@@ -11,15 +15,17 @@ min_hour2=$(date --date 'now + 25 minutes' "+%M %H ")
 #min_hour=$(date -v +10M "+%M %H ")  on Mac
 #day_of_week=$(date -v +10M "+%u")  on Mac
 
-List[1]="internal/oops.git:  feature/refactor_observer_params"
-List[2]="internal/saber.git:  develop"
-List[3]="internal/ufo.git:  develop"
-List[4]="internal/mpas-jedi.git:  feature/refactor_observer_params"
-List[5]="internal/MPAS-Model.git:  release-stable"
+List[1]="internal/mpas-jedi.git: feature/geom_copy"
+List[2]="internal/oops.git:  bugfix/lost_geometry"
+
+#List[3]="internal/saber.git:  bugfix/atlas_backward_compatibility"
+#List[3]="internal/oops.git:  feature/refactor_observer_params"
+#List[5]="internal/ufo.git:  develop"
 
 f="CMakeLists.txt"
 cp ${f}.org $f
-for i in 1 2 3 4 5 ; do 
+#for i in 1 2 3 4 5 ; do 
+for i in 1 2 ; do 
  echo $i
  w=${List[$i]}
  name=`echo $w | cut -d: -f1`
