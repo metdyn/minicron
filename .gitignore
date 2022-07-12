@@ -8,3 +8,6 @@ out.*
 ckcron.sh
 test_ncar_pylib.sh
 CMake*
+flow_ens/MPAS-Work*
+flow_ens/mpas-jedi*
+flow_ens/graphics*

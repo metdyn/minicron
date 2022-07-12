@@ -1,13 +1,25 @@
-#!/bin/bash 
+#
+# This script is not support NOW. 
+#
+# The idea:
+#   - auto change "analyze_config.py" in 
+#     /glade/scratch/$USER/br_autotest/br_2022_06_24/mpas-bundle/mpas-jedi/graphics
+# Cons:
+#   - over complex
+#   - no need to automate to micro-sub-levels 
+#   - script is used once per nightly build 
+#
 
+#!/bin/bash 
 
 export cmd="source ./setconf.sh default_graph.yaml input_graph.yaml graph"
 $cmd T0
 $cmd T1
 $cmd prefix_cycle_dir
-$cmd d_mj_graph
+
 
 base=/glade/scratch/$USER/br_autotest
+d_mj_graph="$base/br_${T0}/mpas-bundle/mpas-jedi/graphics"
 dX0="${prefix_cycle_dir}$T0"
 dX1="${prefix_cycle_dir}$T1"
 f_an="analyze_config.py"
@@ -33,7 +45,6 @@ sed -i -e "s#T0=.*#T0= '$T0'#g"  \
     -e "s#dX1=.*#dX1= '$dX1'#g"  \
     -e "s#user =.*#user = 'yonggangyu'#g" \
     -e "s#VerificationSpace = 'obs'.*#VerificationSpace = 'model'#g" \
-    -e "s#dbConf\['cntrlExpName'\] =.*#dbConf\['cntrlExpName'\] = T0#g" \
     -e "s#dbConf\['lastCycleDTime'\].*#dbConf\['lastCycleDTime'\] = dt.datetime(2018,5,1,0,0,0)#g" \
     -e "s#dbConf\['expDirectory'\] =.*#dbConf\['expDirectory'\] = os.getenv('EXP_DIR','/glade/scratch/'+user+'/br_autotest')#g" \
     analyze_config.py
@@ -49,10 +60,9 @@ echo  "f_an = $f_an"
 if [ $# -ge 1 ]; then
 if [ $1 -eq 1 ]; then
   python3 SpawnAnalyzeStats.py -d mpas
-#  /usr/bin/sleep 100m
-#  mv mpas_analyses  $base/mpas_analyses_${T0}_vs_${T1}
+  /usr/bin/sleep 28m
+  mv mpas_analyses  $base/mpas_analyses_${T0}_vs_${T1}
 fi
 else
- echo
- #  git diff 
+  git diff 
 fi
