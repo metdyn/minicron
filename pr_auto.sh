@@ -1,20 +1,18 @@
 #!/bin/bash
 
-#pr_name="oops1698"
-#pr_name="sp_t2_build_DP"
-#pr_name="saber_backward_sp2"
-pr_name="geometry_copy_std_move"
+pr_name="remove_geom_copy_July_12"
 
 mydate=$(date '+%Y-%m-%d')
 base=/glade/scratch/$USER/br_autotest/br_$mydate
 d_here="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
-min_hour=$(date --date 'now + 5 minutes' "+%M %H ")
-day_of_week=$(date --date 'now + 5 minutes' "+%u ")
-min_hour2=$(date --date 'now + 25 minutes' "+%M %H ")
+min_hour=$(date --date 'now + 3 minutes' "+%M %H ")
+day_of_week=$(date --date 'now + 3 minutes' "+%u ")
+min_hour2=$(date --date 'now + 23 minutes' "+%M %H ")
 
 #min_hour=$(date -v +10M "+%M %H ")  on Mac
 #day_of_week=$(date -v +10M "+%u")  on Mac
 
+nrepo=1
 List[1]="internal/mpas-jedi.git: feature/geom_copy"
 List[2]="internal/oops.git:  bugfix/lost_geometry"
 
@@ -24,8 +22,8 @@ List[2]="internal/oops.git:  bugfix/lost_geometry"
 
 f="CMakeLists.txt"
 cp ${f}.org $f
-#for i in 1 2 3 4 5 ; do 
-for i in 1 2 ; do 
+i=1
+while [[ $i -le $nrepo ]]; do
  echo $i
  w=${List[$i]}
  name=`echo $w | cut -d: -f1`
@@ -33,8 +31,10 @@ for i in 1 2 ; do
 # echo w=$w
 # echo $name $repo
  sed -i -e "s#${name}.*#${name}\" BRANCH ${repo} UPDATE \)#g" $f
+ i=$(( i+1 ))
 done
 diff ${f}.org $f
+
 
 
 cat > crontab2.txt <<EOF

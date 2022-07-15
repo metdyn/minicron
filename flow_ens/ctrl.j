@@ -9,7 +9,6 @@ n=`echo $build | tr "/" "\n" | wc  | awk '{print $1}'`
 n=$(( n-1 ))
 suf=`echo $build | cut -d/ -f$n`
 echo $suf
-exit -1
 
 
 case="3denvar_OIE120km_WarmStart"
@@ -68,6 +67,6 @@ if [ $1 -eq 1 ]; then
   cd $flow
 # module purge
 # source  env-setup/cheyenne.sh
-  ./drive.csh  &> ../out.cron_4_flow_$suf
+  ./drive.csh  &> ../out.flow_$suf
 fi
 fi

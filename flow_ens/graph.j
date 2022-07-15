@@ -1,5 +1,9 @@
 #!/bin/bash 
 
+# ---
+# Usage:  
+#   ./graph.j  NaN      1       2                 -1 
+#              ck     submit  sub + mv graph     move graph
 
 export cmd="source ./setconf.sh default_graph.yaml input_graph.yaml graph"
 $cmd T0
@@ -47,11 +51,23 @@ echo "d_mj_graph = $d_mj_graph"
 echo  "f_an = $f_an"
 
 if [ $# -ge 1 ]; then
-if [ $1 -eq 1 ]; then
-  python3 SpawnAnalyzeStats.py -d mpas
-#  /usr/bin/sleep 100m
-#  mv mpas_analyses  $base/mpas_analyses_${T0}_vs_${T1}
-fi
+  if [ $1 -eq -2 ]; then
+    echo
+    git diff 
+  elif [ $1 -eq -1 ]; then
+    mv mpas_analyses  $base/mpas_analyses_${T0}_vs_${T1}
+  elif [ $1 -eq 1 ]; then
+    python3 SpawnAnalyzeStats.py -d mpas
+  #  /usr/bin/sleep 100m
+  #  mv mpas_analyses  $base/mpas_analyses_${T0}_vs_${T1}
+  elif [ $1 -eq 2 ]; then
+    python3 SpawnAnalyzeStats.py -d mpas
+    /usr/bin/sleep 150m
+    mv mpas_analyses  $base/mpas_analyses_${T0}_vs_${T1}
+  else
+    echo "\$1 -ne -1, 1, 2,  Code Error ! Exit"
+    exit
+  fi
 else
  echo
  #  git diff 
