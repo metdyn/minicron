@@ -24,13 +24,32 @@ control:
   flow: MPAS-Workflow_4_build_May_4
   build: /glade/scratch/yonggangyu/br_autotest/br_2022-05-01/build
 
-#  compiler : 'intel-impi'
-#  flow: MPAS-Workflow_4_build_June_24_intel
-#  build: /glade/scratch/yonggangyu/br_mpasjedi_intel_feature/build
-
   flow:  MPAS-Workflow_JJ_July_12
   build: /glade/scratch/yonggangyu/br_autotest/br_2022-07-12/build
 
   flow: MPAS-Workflow_4_build_June_24
   build: /glade/scratch/yonggangyu/br_mj_intel_feature_July_12_wi_gnu/build
+
+  flow:  MPAS-Workflow_JJ_July_12
+  build: /glade/scratch/yonggangyu/br_autotest/br_2022-07-01/build
+
+  flow:  MPAS-Workflow_JJ_July_12
+  build: /glade/scratch/yonggangyu/br_autotest/br_2022-07-15/build
+
+
+#  compiler : 'intel-impi'
+#  flow: MPAS-Workflow_4_build_June_24_intel
+#  build: /glade/scratch/yonggangyu/br_mpasjedi_intel_feature/build
+
+#  compiler : 'intel-impi'
+#  flow:  MPAS-Workflow_June_24
+#  build: /glade/scratch/yonggangyu/br_mj_intel_feature_July_12/build
+
+#  compiler : 'intel-impi'
+#  flow:  MPAS-Workflow_June_24
+#  build: /glade/scratch/yonggangyu/br_mj_intel_feature_July_12/build
+
+  flow:  MPAS-Workflow_June_24
+  build: /glade/scratch/yonggangyu/br_mj_intel_feature_July_12_wi_gnu/build
+
 

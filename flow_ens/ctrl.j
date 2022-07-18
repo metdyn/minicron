@@ -1,3 +1,9 @@
+# ---
+# Usage:  
+#   ./ctrl.j  NaN    df      1       
+#              ck    git-df  submit
+
+
 #!/bin/bash 
 
 cwd=`pwd`
@@ -10,8 +16,9 @@ n=$(( n-1 ))
 suf=`echo $build | cut -d/ -f$n`
 echo $suf
 
-
 case="3denvar_OIE120km_WarmStart"
+#case="3dvar_OIE120km_WarmStart"
+
 fconf="$cwd/$flow/config/scenario.csh"
 fexp="$cwd/$flow/scenarios/${case}.yaml"
 frc="$cwd/$flow/include/tasks.rc"
@@ -21,6 +28,7 @@ echo "flow = $flow"
 echo "build= $build"
 echo "suf  = $suf"
 echo "case = $case"
+echo "compiler = $compiler"
 echo "fconf= $fconf"
 echo "fexp = $fexp"
 echo "frc  = $frc"
@@ -40,7 +48,7 @@ for i in $s; do
 done
 
 
-sed -i "s#scenario =.*#scenario = $case#g" $fconf
+sed -i "s# scenario =.*# scenario = $case#g" $fconf
 grep -v -e "-m =" $frc > zb
 mv zb $frc
 #sed -i 's#-m =.*#-m =#g' $frc
@@ -57,16 +65,25 @@ experiment:
 workflow:
   InitializationType: WarmStart
   initialCyclePoint: 20180414T18
-  finalCyclePoint:   20180501T00
+  finalCyclePoint:   20180415T00
+#  finalCyclePoint:   20180501T00
 EOF
 mv zb $fexp
 
 
+cd $flow
 if [ $# -ge 1 ]; then
-if [ $1 -eq 1 ]; then
-  cd $flow
-# module purge
-# source  env-setup/cheyenne.sh
-  ./drive.csh  &> ../out.flow_$suf
-fi
+  if [ $1 == 'df' ]; then
+     git diff
+  elif [ $1 -eq 1 ]; then
+
+  # module purge
+  # source  env-setup/cheyenne.sh
+    ./drive.csh  &> ../out.flow_$suf
+  else
+    echo "\$1 -ne 1 or 'df',  error exit"
+    exit
+  fi
+else
+  echo
 fi

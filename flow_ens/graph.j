@@ -2,8 +2,8 @@
 
 # ---
 # Usage:  
-#   ./graph.j  NaN      1       2                 -1 
-#              ck     submit  sub + mv graph     move graph
+#   ./graph.j  NaN    df      1       2                 -1 
+#              ck    git-df  submit  sub + mv graph     move graph
 
 export cmd="source ./setconf.sh default_graph.yaml input_graph.yaml graph"
 $cmd T0
@@ -51,7 +51,7 @@ echo "d_mj_graph = $d_mj_graph"
 echo  "f_an = $f_an"
 
 if [ $# -ge 1 ]; then
-  if [ $1 -eq -2 ]; then
+  if [ $1 == 'df' ]; then
     echo
     git diff 
   elif [ $1 -eq -1 ]; then
